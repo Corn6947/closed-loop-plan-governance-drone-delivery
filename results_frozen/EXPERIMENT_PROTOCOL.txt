@@ -1,0 +1,9 @@
+SAO PAULO GFS--ERA5 FINAL EXPERIMENT PROTOCOL
+Primary: 60 paired observed-date replays; factorial five-policy architecture.
+Weather P90 normal-trigger threshold (development): 1.4794
+Fixed W3=20; adaptive W3 range=[10,50]; PlanChangeScale=10.
+All guarded policies share first-slot ForcedSafetyTrigger and deterministic fallback.
+Ablations disable one ordinary gate only; guard remains enabled.
+Sensitivity and window analyses are prespecified descriptive boundary evidence.
+Fleet boundary: D=2 capacity+priority; D=3 adds reserve; D=4 adds capacity; 60 paired replays each.
+No external algorithm baseline; no target-aircraft same-city energy claim.

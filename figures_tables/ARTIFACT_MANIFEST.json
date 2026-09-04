@@ -1,0 +1,478 @@
+{
+  "Schema": "systems-governance-public-release-v1",
+  "ReleaseID": "systems-governance-public-release-20260901",
+  "GeneratedAtUTC": "2026-09-01T09:00:56.290140+00:00",
+  "ExecutionEnvironment": {
+    "MATLAB": "24.2.0.2712019 (R2024b)",
+    "OperatingSystem": "Microsoft Windows 10.0.22631.6199",
+    "Processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "LogicalProcessors": 28,
+    "PhysicalMemoryGB": 31.842933654785156,
+    "YALMIP": "20230622",
+    "Gurobi": "10.0.1 build v10.0.1rc0 (win64)",
+    "GurobiThreads": 1,
+    "GurobiSeed": 20260728,
+    "MILPTimeLimitSeconds": 0.5
+  },
+  "PrimaryDesign": {
+    "InputContract": "same-city Sao Paulo Olist order-time proxy + lead-specific GFS forecast + ERA5 actual wind; external M100 energy envelope",
+    "Replications": 60,
+    "SharedRandomNumbers": true,
+    "PolicySet": [
+      "AlwaysFixed",
+      "ETFixed",
+      "AlwaysAdaptive",
+      "ETAdaptive",
+      "AlwaysMyopic reference"
+    ],
+    "PrimaryContrast": "ETFixed minus AlwaysFixed",
+    "PrimaryStatisticalAnalysis": "Scenario-level paired Student-t 95% confidence interval",
+    "Diagnostics": [
+      "paired percentile-bootstrap 95% CI",
+      "exploratory order-level mixed-effects logistic diagnostic with scenario random intercept only"
+    ],
+    "SafetyInvariant": "UnsafeExecutionRate is zero in every guarded replication"
+  },
+  "SupplementaryDesign": {
+    "ReplicationsPerCondition": 20,
+    "Conditions": [
+      "P80 weather gate",
+      "wind-gate ablation",
+      "low-SoC-gate ablation",
+      "three inertia ranges",
+      "two PlanChangeScale conditions",
+      "H=2/3/4 windows",
+      "paired guard ON/OFF"
+    ],
+    "AdditionalR60Conditions": [
+      "D=2/3/4 fleet-size boundary under the primary fixed-inertia comparison",
+      "outcome-blind descriptive input strata of 30 lower and 30 upper primary scenarios"
+    ],
+    "Interpretation": "Supplementary conditions are mechanism or boundary evidence and do not reselect the primary policy."
+  },
+  "ClaimBoundaries": [
+    "Same-city inputs improve joint demand-weather credibility but are not an enterprise deployment log.",
+    "Olist purchase timestamps are demand-timing proxies, not last-mile order-release timestamps.",
+    "Spatial zones are calibration-only abstract proxies; platform position and movement remain engineering assumptions.",
+    "M100 energy data are an external aircraft-transfer envelope, not same-city target-aircraft telemetry.",
+    "VIP labels, W3, and Hs are scenario/governance parameters, not empirical organisational-cost estimates.",
+    "The fleet-size exercise tests robustness of the fixed-inertia governance contrast, not a monotonic fleet-sizing rule.",
+    "The input strata are outcome-blind descriptive analyses, not prespecified confirmatory moderator tests.",
+    "The order-level mixed-effects diagnostic represents scenario clustering but not order-level policy pairing; its Wald intervals are descriptive and cannot replace scenario-level paired inference.",
+    "Do not claim an adaptive-inertia advantage over ETFixed: the tested sensitivity ranges do not establish one.",
+    "Do not claim the ETFixed VIP difference is Student-t confirmed: its primary t interval marginally crosses zero, although the paired bootstrap interval is positive."
+  ],
+  "Artifacts": [
+    {
+      "Path": "results_frozen/primary_policy_comparison_60_scenarios.mat",
+      "Bytes": 625573,
+      "SHA256": "c7d97b93e2184d41ef8f036f1c405a42d10f0bb75f6df2a6296de0a14ffc569e"
+    },
+    {
+      "Path": "results_frozen/weather_p80_boundary_20_scenarios.mat",
+      "Bytes": 83088,
+      "SHA256": "a3e1dfc7c590bfc2728b1ff3a2f787f53cb8cec8214980d5f8741447369a0956"
+    },
+    {
+      "Path": "results_frozen/wind_gate_ablation_20_scenarios.mat",
+      "Bytes": 79096,
+      "SHA256": "35cef4313bde54426006319d7def1495bc4832d9ba96e765aab557cde3fd98c4"
+    },
+    {
+      "Path": "results_frozen/low_soc_gate_ablation_20_scenarios.mat",
+      "Bytes": 83931,
+      "SHA256": "9f75f6149db83e13c2c3b0dcf0d97e6158c1a5d579bf8e04e17452626f7c7797"
+    },
+    {
+      "Path": "results_frozen/low_inertia_sensitivity_20_scenarios.mat",
+      "Bytes": 166760,
+      "SHA256": "e8a1d7824c04af1d03db1e33000e21beb4418c2e85e63b3c22aa0860a525924c"
+    },
+    {
+      "Path": "results_frozen/reference_inertia_sensitivity_20_scenarios.mat",
+      "Bytes": 153610,
+      "SHA256": "e2af52f145f2fbcec14bfe1cfff5ef95d26c119d8a77128130f02796c17ab59d"
+    },
+    {
+      "Path": "results_frozen/high_inertia_sensitivity_20_scenarios.mat",
+      "Bytes": 173992,
+      "SHA256": "71939abd6bf960e4ff332fd70f64dd05dd743410806e90e33c992a1f9a7cd123"
+    },
+    {
+      "Path": "results_frozen/low_plan_change_scale_20_scenarios.mat",
+      "Bytes": 92310,
+      "SHA256": "b2aefcbeec054419a0ebfeefdf9207f5dd6d50fd48374e1415a78f81adaa79c6"
+    },
+    {
+      "Path": "results_frozen/high_plan_change_scale_20_scenarios.mat",
+      "Bytes": 89520,
+      "SHA256": "895f5dd88ea3bb1534ea4c53437f03f52a6dd5ca2b1750ef272701da57dbe972"
+    },
+    {
+      "Path": "results_frozen/planning_window_2_steps_20_scenarios.mat",
+      "Bytes": 81477,
+      "SHA256": "f812f00ecc68977327af02dfa0d24e62a9d6e90ef73353472edd661c571ed76d"
+    },
+    {
+      "Path": "results_frozen/planning_window_3_steps_20_scenarios.mat",
+      "Bytes": 86339,
+      "SHA256": "f5639921617da9008b31490c88524c7597bcf856d9371915aee70717e7e9451c"
+    },
+    {
+      "Path": "results_frozen/planning_window_4_steps_20_scenarios.mat",
+      "Bytes": 87289,
+      "SHA256": "2f12ab47c8fbd2df03d13d54f89be35781b130303690604ea650aa42e27d13c1"
+    },
+    {
+      "Path": "results_frozen/safety_guard_on_20_scenarios.mat",
+      "Bytes": 61457,
+      "SHA256": "05a59b93a1594dd838176b0fa8465278276da6ac6a1d088df2efa39c3c530274"
+    },
+    {
+      "Path": "results_frozen/safety_guard_off_20_scenarios.mat",
+      "Bytes": 59599,
+      "SHA256": "e575eaad1ef8cb75dfec982cfcb42750d25170b48d8d7cbaa8ae76ebedec741c"
+    },
+    {
+      "Path": "results_frozen/fleet_size_2_60_scenarios.mat",
+      "Bytes": 238700,
+      "SHA256": "eca3ff4e9ffd912d58a26e91092299975ef3a427f9c3cbdb081864b4000a52ca"
+    },
+    {
+      "Path": "results_frozen/fleet_size_3_60_scenarios.mat",
+      "Bytes": 238453,
+      "SHA256": "9e63ae2eb53bf0dcf567884d213b1c66d00afb8039fea29b0c809d91d15fdaaf"
+    },
+    {
+      "Path": "results_frozen/fleet_size_4_60_scenarios.mat",
+      "Bytes": 239376,
+      "SHA256": "127601fdda706c6f1f9741e314d6431041967a36697bd2610d9fe32a33ba457b"
+    },
+    {
+      "Path": "results_frozen/consolidated_experiment_suite.mat",
+      "Bytes": 28407704,
+      "SHA256": "2adc15cccc5b505072cec3ff1833748950f4eefabd530e46ba9b74c33d5e7ab4"
+    },
+    {
+      "Path": "results_frozen/EXPERIMENT_PROTOCOL.txt",
+      "Bytes": 658,
+      "SHA256": "41e511598f19f4ae1ffa2615666c48623b898fda05d99af9a1cfb752c0c7fee5"
+    },
+    {
+      "Path": "results_frozen/exports/primary_policy_summary.csv",
+      "Bytes": 4186,
+      "SHA256": "196e84dcb151c6fa20e30098234359f951ba9ff1b8ab1419207c5d6da9c617e4"
+    },
+    {
+      "Path": "results_frozen/exports/primary_paired_contrasts.csv",
+      "Bytes": 3236,
+      "SHA256": "0ce116076b9a0502c438931c994824b1b52e17db1f3e730d9f435254b5f9e689"
+    },
+    {
+      "Path": "results_frozen/exports/order_level_glmm_diagnostic.csv",
+      "Bytes": 611,
+      "SHA256": "a36bb85aaa2c244394520a51e362c0029c98143454add3f195e2c2bcb94908bd"
+    },
+    {
+      "Path": "results_frozen/exports/access_mechanism_boundaries.csv",
+      "Bytes": 3201,
+      "SHA256": "4bfaa74613cf1bb2f0c91b36b4e218dc64ec7e6d311273a65ee41c314212dc94"
+    },
+    {
+      "Path": "results_frozen/exports/inertia_sensitivity.csv",
+      "Bytes": 917,
+      "SHA256": "3e1a91a42aadd7a4b859a1b0cedb154e7e3a630fad2d0f9da362c1a96b5731dd"
+    },
+    {
+      "Path": "results_frozen/exports/safety_guard_ablation.csv",
+      "Bytes": 412,
+      "SHA256": "90e0ea84f31930179f5a9d58d37dba1ba01e19e4329424be35b3f975bf5260f0"
+    },
+    {
+      "Path": "results_frozen/exports/fleet_size_boundaries.csv",
+      "Bytes": 1236,
+      "SHA256": "2d9637ed8547fe9135c81a9e2c1dcb4aaadcf777dd516ea40c595c08f1db0b2d"
+    },
+    {
+      "Path": "results_frozen/exports/fleet_role_utilisation.csv",
+      "Bytes": 1137,
+      "SHA256": "e4d789ae06a2efec78608f618630ba75ac3b8f43967702bfca60b9a50fcd672a"
+    },
+    {
+      "Path": "results_frozen/exports/input_heterogeneity_diagnostics.csv",
+      "Bytes": 2748,
+      "SHA256": "d2885f845638d17428d30741b7f1519182d29da99b695aadce33668bbd72c8f8"
+    },
+    {
+      "Path": "results_frozen/exports/primary_input_covariates.csv",
+      "Bytes": 2544,
+      "SHA256": "54d8b27875dfe8e09b3943b1b9b6c56de37bee59b7fcd956f7adf214db85c6ca"
+    },
+    {
+      "Path": "results_frozen/exports/primary_release_analysis.mat",
+      "Bytes": 5460,
+      "SHA256": "949148cf4c3ccca7bc537aba91aeb76352aa6c6821b07260f348c404a8c0ff81"
+    },
+    {
+      "Path": "results_frozen/exports/supporting_analysis.mat",
+      "Bytes": 4214,
+      "SHA256": "10a4c05c4b896502b0f1a49ba45bc94f76e74314d028e365367b2eef6272611f"
+    },
+    {
+      "Path": "results_frozen/exports/fleet_and_heterogeneity_analysis.mat",
+      "Bytes": 5514,
+      "SHA256": "00a8c15795a387dfa4a00855f7b122c5c0e5341e542b38694e06ada50c2215e0"
+    },
+    {
+      "Path": "results_frozen/exports/holdout_order_outcomes.csv",
+      "Bytes": 204635,
+      "SHA256": "ce082d848c88ca2eecde06b7069a553dfeb41db5fa143384616ca95f803f1ff3"
+    },
+    {
+      "Path": "results_frozen/exports/manuscript_claims_from_results.md",
+      "Bytes": 2661,
+      "SHA256": "ae51fcaabdc44dc69b3646cc40a88a2e71183e73ed81cc34d6ce7b327af18fa0"
+    },
+    {
+      "Path": "data_calibration/processed/public_calibration_contract.json",
+      "Bytes": 1902,
+      "SHA256": "85d7610aac7321a3b079fb0b25d63541d83389ca564dfc945c1af94dda7ee230"
+    },
+    {
+      "Path": "data_calibration/processed/sao_paulo_gfs_era5_forecast_pairs_20min.csv",
+      "Bytes": 4589029,
+      "SHA256": "d8e57f837d4e965bfc829a08292193d8e7af9860f6ae6b209d95a71119e46f42"
+    },
+    {
+      "Path": "data_calibration/processed/sao_paulo_order_weather_20min.csv",
+      "Bytes": 1295168,
+      "SHA256": "cfff6a1632f258cb8b3ce6fd7a3811fc8f4909e421d2c38110133ef7d1d0a6c8"
+    },
+    {
+      "Path": "data_calibration/processed/sao_paulo_joint_episode_catalog.csv",
+      "Bytes": 30855,
+      "SHA256": "fee1f782917421da984d8c34ec6aaf04a4c6646c2b7fe82b80812cf8ff879080"
+    },
+    {
+      "Path": "data_calibration/processed/olist_12_zone_geometry.csv",
+      "Bytes": 2080,
+      "SHA256": "9ffae311184101b430b4847c391777fe07fa8dcd5cf612b6b65af3fdbc6dc846"
+    },
+    {
+      "Path": "data_calibration/processed/olist_hourly_demand_profile.csv",
+      "Bytes": 1214,
+      "SHA256": "3dddf6ca382bad4a65eb30a71cdc3e9b4d42c456dc0a5e31acf1b8c3ead82194"
+    },
+    {
+      "Path": "data_calibration/processed/matrice100_energy_summary.csv",
+      "Bytes": 27086,
+      "SHA256": "375dd257036df012161878b1b85b09a48fce23ddf209061c4414aecfd2be1923"
+    },
+    {
+      "Path": "data_calibration/PUBLIC_SOURCE_MANIFEST.json",
+      "Bytes": 1237,
+      "SHA256": "5ebdf195c003f81de2dc9e13d501cdfada8b601a11180cd7afabb91438b68dd4"
+    },
+    {
+      "Path": "data_calibration/source_manifest.json",
+      "Bytes": 5827,
+      "SHA256": "1b7c6085bbbe18dfaf91ce65d251dc5a93615ac578df1cf1d838e2f9f41aa66d"
+    },
+    {
+      "Path": "data_calibration/sao_paulo_gfs_source_manifest.json",
+      "Bytes": 1630,
+      "SHA256": "25e220be711aa4ea3a11bf36cefb6ad60cff9ccf0eb9c9e674ffca0faa3ca2a0"
+    },
+    {
+      "Path": "data_calibration/joint_replay_source_manifest.json",
+      "Bytes": 707,
+      "SHA256": "4cb440e0b1f2195a65e387e8834a33350d955fc6451ba84d55b8cb5b57cb41da"
+    },
+    {
+      "Path": "data_calibration/energy_telemetry_search_manifest.json",
+      "Bytes": 1777,
+      "SHA256": "6ec22d3d22bcbf1a851908d777e288372fefd435dbc498625daf1bb44dd9b2ac"
+    },
+    {
+      "Path": "data_calibration/reports/sao_paulo_gfs_forecast_validation.json",
+      "Bytes": 3796,
+      "SHA256": "a25c7fd3dbde541707e1e65812b2616ad2b628948b1805c0233121ff1a2cffad"
+    },
+    {
+      "Path": "data_calibration/reports/sao_paulo_joint_replay_integrity.json",
+      "Bytes": 721,
+      "SHA256": "ade19034a085bd285d48c58ce5bc6e03fb49ddfc2d85f915f088cd2508d20b46"
+    },
+    {
+      "Path": "data_calibration/matlab/load_public_spatial_zones.m",
+      "Bytes": 1324,
+      "SHA256": "849a65c1b93d4ad36a936badacc0b0c3040e35174d0a793f237597e163117187"
+    },
+    {
+      "Path": "data_calibration/matlab/draw_public_arrivals.m",
+      "Bytes": 2618,
+      "SHA256": "a5513eb520e4231e556af96d0967248cc586e365438194b1f595a615fcb5d416"
+    },
+    {
+      "Path": "data_calibration/matlab/draw_public_weather_path.m",
+      "Bytes": 2179,
+      "SHA256": "d440f719e4e06c30033371fa4cc292c11ebee50f37311f9bdfddd0d4798da75b"
+    },
+    {
+      "Path": "figures_tables/Figure1_Closed_Loop_Governance_Architecture.png",
+      "Bytes": 198922,
+      "SHA256": "92201a1a4165f4492a0c3a493534096e1f83529c0b46386a20028f9ecad37969"
+    },
+    {
+      "Path": "figures_tables/Figure2_Sao_Paulo_Calibration_Evidence.png",
+      "Bytes": 258576,
+      "SHA256": "1c578211e4580e1f8c7472305a7ef37706a483d6ac9f54a4bee82e965bb784b4"
+    },
+    {
+      "Path": "figures_tables/Figure3_Representative_Sao_Paulo_Replay.png",
+      "Bytes": 293362,
+      "SHA256": "6c8fb28c1ecfb281ec761ebc5a87b3a13f4cbd1ab0404aa927081ad42e6b86d8"
+    },
+    {
+      "Path": "figures_tables/Figure4_Primary_Holdout_Policy_Evidence.png",
+      "Bytes": 196725,
+      "SHA256": "923cb29b6a2ec98086c846e0ef586b316d6baeb6e650a5123af0455edcb8e916"
+    },
+    {
+      "Path": "figures_tables/Figure5_Governance_Mechanism_and_Inertia_Evidence.png",
+      "Bytes": 232913,
+      "SHA256": "7fd659dd18596b6493e246eeac1ffc8f2f4e5e84bc4d1bb09f358822941345b3"
+    },
+    {
+      "Path": "figures_tables/Figure6_Boundary_and_Safety_Evidence.png",
+      "Bytes": 128308,
+      "SHA256": "167aa4c11cd0c50f528ebf517bd45886e58665db2d43d2d10673283d050ede22"
+    },
+    {
+      "Path": "figures_tables/Figure7_Fleet_and_Input_Heterogeneity_Boundaries.png",
+      "Bytes": 221212,
+      "SHA256": "a8705d48a035be48de9e8150e58fe500f1aa651ff42f05761c9cac60bf6a7fe2"
+    },
+    {
+      "Path": "figures_tables/Table1_Calibration_and_Experimental_Contract.docx",
+      "Bytes": 38151,
+      "SHA256": "f6d8592121487277e439111d1ce9dd3e246221c3cfd2a3c1a2e28b850de9ffd8"
+    },
+    {
+      "Path": "figures_tables/Table2_Primary_Holdout_Policy_Evidence.docx",
+      "Bytes": 38187,
+      "SHA256": "10b232e5ee3f8404aeb05347eef68668386d5ac1b617e534f3e55dcd8bc3d8b1"
+    },
+    {
+      "Path": "figures_tables/Table3_Mechanism_Boundary_and_Safety_Evidence.docx",
+      "Bytes": 39078,
+      "SHA256": "5e40b0213c991b5430b47aaa13d1f0f4754fb7582c82c8528c0d0b5c35563b6c"
+    },
+    {
+      "Path": "figures_tables/Table4_Fleet_Size_and_Input_Heterogeneity.docx",
+      "Bytes": 38249,
+      "SHA256": "dc498d6467292aa081b6f49a4345c1f4d8d07de8341dd3fed1191b59726cdf13"
+    },
+    {
+      "Path": "figures_tables/Appendix_Table_A6_Outcome_Blind_Input_Heterogeneity.docx",
+      "Bytes": 38432,
+      "SHA256": "cfa4710d86c622e493a1080c7165653030e981d000b173eeed58eb1df7780d07"
+    },
+    {
+      "Path": "systems_default_config.m",
+      "Bytes": 6566,
+      "SHA256": "4eb203335541e6d2fc93e9f0fcb4e7a7d6b62dee5aad1b73fc29beed144e6be5"
+    },
+    {
+      "Path": "systems_policy_catalog.m",
+      "Bytes": 2491,
+      "SHA256": "1a976810444593e31c0655e5783d951f4bf87f247060cad9eeea3e93dba49800"
+    },
+    {
+      "Path": "run_governance_evidence_suite.m",
+      "Bytes": 58618,
+      "SHA256": "bcfd4cf7d56399a1f38b3d77d42369b9aafca628f831a7c9ed84f22f8f521ee6"
+    },
+    {
+      "Path": "draw_sao_paulo_order_weather_scenario.m",
+      "Bytes": 4165,
+      "SHA256": "370a9532705cbc76aaade258ccb0910874d8403bed1bbf2d835170c1bfbc9010"
+    },
+    {
+      "Path": "run_final_experiment_suite.m",
+      "Bytes": 6746,
+      "SHA256": "2326d316ab138108face79a41fa7460cadfd2c9f40ea8d553813734d38116abe"
+    },
+    {
+      "Path": "adaptive_plan_inertia_weight.m",
+      "Bytes": 1405,
+      "SHA256": "635ecf4898e2f7489fac8a990b410cec02f479432c18b2f353df3d5e1eb5178b"
+    },
+    {
+      "Path": "plan_change_distance.m",
+      "Bytes": 622,
+      "SHA256": "86eb92c64026436197f907928519841a7a8693da67fa42639752745e0fb1588b"
+    },
+    {
+      "Path": "relocate_mobile_platform.m",
+      "Bytes": 713,
+      "SHA256": "a8df7b8a5b583e00323fb340b488be15653397c6d9b80652006a34832a1a6ef2"
+    },
+    {
+      "Path": "evaluate_flight_physics.m",
+      "Bytes": 3146,
+      "SHA256": "957d7c31a19c1fcb314aa993af975558fc14da97659671a27b3e961db92ce8c0"
+    },
+    {
+      "Path": "evaluate_order_status.m",
+      "Bytes": 787,
+      "SHA256": "f5392b1242b2f12642ce5a004ae1319b85b60e9362c64b112c2d150d592fbdcf"
+    },
+    {
+      "Path": "mean_student_t_ci.m",
+      "Bytes": 538,
+      "SHA256": "827829e68ddcca20eaf0f7153c9991f7b863b508ae5a9e01ddd6c4329d3a8ae6"
+    },
+    {
+      "Path": "build_release_fingerprint.m",
+      "Bytes": 3386,
+      "SHA256": "ea0dd980198e3736158b8201830db25ba3f7957881a0cf8ceb94acfa246e4bca"
+    },
+    {
+      "Path": "export_primary_statistics.m",
+      "Bytes": 7606,
+      "SHA256": "63b5c163ab23867359e09d2512e187ad353602958a3f3ff64aaab312990c6b28"
+    },
+    {
+      "Path": "export_supporting_statistics.m",
+      "Bytes": 5738,
+      "SHA256": "c884f9c52bd72f4b377e3d010479537276f875ccbb5f5f05f8e034970be3718d"
+    },
+    {
+      "Path": "export_fleet_and_heterogeneity_statistics.m",
+      "Bytes": 4500,
+      "SHA256": "96f533b9ee1c17e55244cf416fa7eda2700705f48b81326f657b4382437af891"
+    },
+    {
+      "Path": "generate_submission_figures.m",
+      "Bytes": 25872,
+      "SHA256": "0bc812c1988c6854909635e5ba36b8d670eda4a2f0bbf291bb42d544406c7226"
+    },
+    {
+      "Path": "verify_frozen_release.m",
+      "Bytes": 3520,
+      "SHA256": "edb54f6b940497a4d93d9af551354c716f2f2f5c4303938ba1d21384526d9b33"
+    },
+    {
+      "Path": "create_submission_tables.py",
+      "Bytes": 14322,
+      "SHA256": "763fde369c972214b2e89c588ffe6e1eac89ef301bb0c49ebbf370db6a14a770"
+    },
+    {
+      "Path": "build_artifact_manifest.py",
+      "Bytes": 7140,
+      "SHA256": "bd9703202fb1606034ea9553022de6d78851dd54715f3ea356a2e5b22858de09"
+    }
+  ],
+  "ManifestSHA256": "97a73f1a7ab2942bb1f02b8d0174266297c1af4bdd6ec959b11a184685832f17"
+}

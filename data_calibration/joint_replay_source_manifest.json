@@ -1,0 +1,10 @@
+{
+  "id": "sao_paulo_era5_open_meteo_explicit_model_2016_2018",
+  "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-23.5505&longitude=-46.6333&start_date=2016-10-02&end_date=2018-09-06&hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=ms&timezone=America%2FSao_Paulo&models=era5",
+  "licence": "Open-Meteo attribution terms; underlying ERA5 Copernicus attribution applies.",
+  "purpose": "Realised 10 m wind joined to Olist Sao Paulo purchases by local time.",
+  "local_file": "raw/sao_paulo_era5_wind_2016_2018_model_era5.json",
+  "bytes": 469766,
+  "sha256": "d84067ff39486c5fb411330f76316895b86a1ba008dc8645d2f86b5f8a50f6c4",
+  "generated_utc": "2026-08-06T02:18:06+00:00"
+}

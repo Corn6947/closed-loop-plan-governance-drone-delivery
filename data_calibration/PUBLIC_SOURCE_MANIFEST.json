@@ -1,0 +1,36 @@
+{
+  "schema": "systems-public-source-manifest-v1",
+  "raw_data_redistributed": false,
+  "directly_identifiable_personal_data": false,
+  "pseudonymous_order_identifiers_in_public_derived_files": false,
+  "sources": [
+    {
+      "id": "olist_sao_paulo_demand_proxy",
+      "role": "purchase-time demand proxy and calibration-only spatial weights",
+      "public_access": true,
+      "redistribution": "raw files excluded; reacquire under source terms"
+    },
+    {
+      "id": "ncep_gfs_d084001",
+      "doi": "10.5065/D65D8PWK",
+      "role": "archived Sao Paulo forecast-wind input",
+      "public_access": true,
+      "redistribution": "raw files excluded; derived replay included"
+    },
+    {
+      "id": "era5_realised_wind_proxy",
+      "role": "same-city realised-wind proxy",
+      "public_access": true,
+      "redistribution": "raw file excluded; derived replay included"
+    },
+    {
+      "id": "dji_matrice_100_energy",
+      "article_doi": "10.1038/s41597-021-00930-x",
+      "data_doi": "10.1184/R1/12683453",
+      "role": "external mission-energy transfer envelope",
+      "public_access": true,
+      "source_license": "CC BY 4.0",
+      "redistribution": "raw telemetry excluded; derived summary included"
+    }
+  ]
+}

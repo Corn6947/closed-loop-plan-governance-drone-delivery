@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite the archived release."
+type: software
+title: "Reproducibility package for Closed-Loop Plan Governance for Dynamic Drone Delivery Supported by a Mobile Platform"
+authors:
+  - family-names: Huang
+    given-names: Wenjie
+    affiliation: "School of Electrical Engineering, Southwest Jiaotong University, Chengdu 611756, China"
+  - family-names: Zhou
+    given-names: Jiang
+    affiliation: "School of Economics and Management, Southwest Jiaotong University, Chengdu 610031, China"
+version: 1.0.0
+date-released: 2026-09-04
+license: MIT
+repository-code: "https://github.com/Corn6947/closed-loop-plan-governance-drone-delivery"
+url: "https://github.com/Corn6947/closed-loop-plan-governance-drone-delivery"
+abstract: >-
+  Author-written code, public derived calibration inputs, frozen results,
+  random seeds, figures, tables, and provenance records supporting an
+  empirically informed simulation of closed-loop plan governance for dynamic
+  drone delivery. See LICENSE_SCOPE.md for the mixed-license boundaries.
+keywords:
+  - dynamic drone delivery
+  - mobile platform
+  - event-triggered planning
+  - plan inertia
+  - safety guard
+  - reproducibility

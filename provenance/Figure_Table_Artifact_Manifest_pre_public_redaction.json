@@ -1,0 +1,458 @@
+{
+  "Schema": "systems-sao-paulo-gfs-era5-final-release-v3",
+  "ReleaseID": "systems-sp-gfs-era5-governance-final-20260806",
+  "GeneratedAtUTC": "2026-09-01T01:02:08.178377+00:00",
+  "ExecutionEnvironment": {
+    "MATLAB": "24.2.0.2712019 (R2024b)",
+    "OperatingSystem": "Microsoft Windows 10.0.22631.6199",
+    "Processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "LogicalProcessors": 28,
+    "PhysicalMemoryGB": 31.842933654785156,
+    "YALMIP": "20230622",
+    "Gurobi": "10.0.1 build v10.0.1rc0 (win64)",
+    "GurobiThreads": 1,
+    "GurobiSeed": 20260728,
+    "MILPTimeLimitSeconds": 0.5
+  },
+  "PrimaryDesign": {
+    "InputContract": "same-city Sao Paulo Olist order-time proxy + lead-specific GFS forecast + ERA5 actual wind; external M100 energy envelope",
+    "Replications": 60,
+    "SharedRandomNumbers": true,
+    "PolicySet": [
+      "AlwaysFixed",
+      "ETFixed",
+      "AlwaysAdaptive",
+      "ETAdaptive",
+      "AlwaysMyopic reference"
+    ],
+    "PrimaryContrast": "ETFixed minus AlwaysFixed",
+    "PrimaryStatisticalAnalysis": "Scenario-level paired Student-t 95% confidence interval",
+    "Diagnostics": [
+      "paired percentile-bootstrap 95% CI",
+      "exploratory order-level mixed-effects logistic diagnostic with scenario random intercept only"
+    ],
+    "SafetyInvariant": "UnsafeExecutionRate is zero in every guarded replication"
+  },
+  "SupplementaryDesign": {
+    "ReplicationsPerCondition": 20,
+    "Conditions": [
+      "P80 weather gate",
+      "wind-gate ablation",
+      "low-SoC-gate ablation",
+      "three inertia ranges",
+      "two PlanChangeScale conditions",
+      "H=2/3/4 windows",
+      "paired guard ON/OFF"
+    ],
+    "AdditionalR60Conditions": [
+      "D=2/3/4 fleet-size boundary under the primary fixed-inertia comparison",
+      "outcome-blind descriptive input strata of 30 lower and 30 upper primary scenarios"
+    ],
+    "Interpretation": "Supplementary conditions are mechanism or boundary evidence and do not reselect the primary policy."
+  },
+  "ClaimBoundaries": [
+    "Same-city inputs improve joint demand-weather credibility but are not an enterprise deployment log.",
+    "Olist purchase timestamps are demand-timing proxies, not last-mile order-release timestamps.",
+    "Spatial zones are calibration-only abstract proxies; platform position and movement remain engineering assumptions.",
+    "M100 energy data are an external aircraft-transfer envelope, not same-city target-aircraft telemetry.",
+    "VIP labels, W3, and Hs are scenario/governance parameters, not empirical organisational-cost estimates.",
+    "The fleet-size exercise tests robustness of the fixed-inertia governance contrast, not a monotonic fleet-sizing rule.",
+    "The input strata are outcome-blind descriptive analyses, not prespecified confirmatory moderator tests.",
+    "The order-level mixed-effects diagnostic represents scenario clustering but not order-level policy pairing; its Wald intervals are descriptive and cannot replace scenario-level paired inference.",
+    "Do not claim an adaptive-inertia advantage over ETFixed: the tested sensitivity ranges do not establish one.",
+    "Do not claim the ETFixed VIP difference is Student-t confirmed: its primary t interval marginally crosses zero, although the paired bootstrap interval is positive."
+  ],
+  "Artifacts": [
+    {
+      "Path": "results_Q2_SP_GFS_final/primary_factorial5_r60.mat",
+      "Bytes": 625573,
+      "SHA256": "c7d97b93e2184d41ef8f036f1c405a42d10f0bb75f6df2a6296de0a14ffc569e"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/weather_p80_gate2_r20.mat",
+      "Bytes": 83088,
+      "SHA256": "a3e1dfc7c590bfc2728b1ff3a2f787f53cb8cec8214980d5f8741447369a0956"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/ablation_wind_gate_off_gate2_r20.mat",
+      "Bytes": 79096,
+      "SHA256": "35cef4313bde54426006319d7def1495bc4832d9ba96e765aab557cde3fd98c4"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/ablation_low_soc_gate_off_gate2_r20.mat",
+      "Bytes": 83931,
+      "SHA256": "9f75f6149db83e13c2c3b0dcf0d97e6158c1a5d579bf8e04e17452626f7c7797"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/sensitivity_w3_low_factorial4_r20.mat",
+      "Bytes": 166760,
+      "SHA256": "e8a1d7824c04af1d03db1e33000e21beb4418c2e85e63b3c22aa0860a525924c"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/sensitivity_w3_frozen_factorial4_r20.mat",
+      "Bytes": 153610,
+      "SHA256": "e2af52f145f2fbcec14bfe1cfff5ef95d26c119d8a77128130f02796c17ab59d"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/sensitivity_w3_high_factorial4_r20.mat",
+      "Bytes": 173992,
+      "SHA256": "71939abd6bf960e4ff332fd70f64dd05dd743410806e90e33c992a1f9a7cd123"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/sensitivity_scale_low_gate2_r20.mat",
+      "Bytes": 92310,
+      "SHA256": "b2aefcbeec054419a0ebfeefdf9207f5dd6d50fd48374e1415a78f81adaa79c6"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/sensitivity_scale_high_gate2_r20.mat",
+      "Bytes": 89520,
+      "SHA256": "895f5dd88ea3bb1534ea4c53437f03f52a6dd5ca2b1750ef272701da57dbe972"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/boundary_window2_gate2_r20.mat",
+      "Bytes": 81477,
+      "SHA256": "f812f00ecc68977327af02dfa0d24e62a9d6e90ef73353472edd661c571ed76d"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/boundary_window3_gate2_r20.mat",
+      "Bytes": 86339,
+      "SHA256": "f5639921617da9008b31490c88524c7597bcf856d9371915aee70717e7e9451c"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/boundary_window4_gate2_r20.mat",
+      "Bytes": 87289,
+      "SHA256": "2f12ab47c8fbd2df03d13d54f89be35781b130303690604ea650aa42e27d13c1"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/guard_on_core2_r20.mat",
+      "Bytes": 61457,
+      "SHA256": "05a59b93a1594dd838176b0fa8465278276da6ac6a1d088df2efa39c3c530274"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/guard_off_core2_r20.mat",
+      "Bytes": 59599,
+      "SHA256": "e575eaad1ef8cb75dfec982cfcb42750d25170b48d8d7cbaa8ae76ebedec741c"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/boundary_fleet2_gate2_r60.mat",
+      "Bytes": 238700,
+      "SHA256": "eca3ff4e9ffd912d58a26e91092299975ef3a427f9c3cbdb081864b4000a52ca"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/boundary_fleet3_gate2_r60.mat",
+      "Bytes": 238453,
+      "SHA256": "9e63ae2eb53bf0dcf567884d213b1c66d00afb8039fea29b0c809d91d15fdaaf"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/boundary_fleet4_gate2_r60.mat",
+      "Bytes": 239376,
+      "SHA256": "127601fdda706c6f1f9741e314d6431041967a36697bd2610d9fe32a33ba457b"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/q2_sao_paulo_final_suite.mat",
+      "Bytes": 28407704,
+      "SHA256": "2adc15cccc5b505072cec3ff1833748950f4eefabd530e46ba9b74c33d5e7ab4"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/PROTOCOL.txt",
+      "Bytes": 658,
+      "SHA256": "41e511598f19f4ae1ffa2615666c48623b898fda05d99af9a1cfb752c0c7fee5"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table2_SPGFS_Holdout_Policy_Summary.csv",
+      "Bytes": 4186,
+      "SHA256": "196e84dcb151c6fa20e30098234359f951ba9ff1b8ab1419207c5d6da9c617e4"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table2_SPGFS_Paired_Contrasts.csv",
+      "Bytes": 3236,
+      "SHA256": "0ce116076b9a0502c438931c994824b1b52e17db1f3e730d9f435254b5f9e689"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table2_SPGFS_OrderLevel_GLMM.csv",
+      "Bytes": 611,
+      "SHA256": "a36bb85aaa2c244394520a51e362c0029c98143454add3f195e2c2bcb94908bd"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table3_SPGFS_Access_Mechanism_Boundaries.csv",
+      "Bytes": 3201,
+      "SHA256": "4bfaa74613cf1bb2f0c91b36b4e218dc64ec7e6d311273a65ee41c314212dc94"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table3_SPGFS_Inertia_Sensitivity.csv",
+      "Bytes": 917,
+      "SHA256": "3e1a91a42aadd7a4b859a1b0cedb154e7e3a630fad2d0f9da362c1a96b5731dd"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table3_SPGFS_Paired_Safety_Ablation.csv",
+      "Bytes": 412,
+      "SHA256": "90e0ea84f31930179f5a9d58d37dba1ba01e19e4329424be35b3f975bf5260f0"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table3_SPGFS_Fleet_Size_Boundary.csv",
+      "Bytes": 1236,
+      "SHA256": "2d9637ed8547fe9135c81a9e2c1dcb4aaadcf777dd516ea40c595c08f1db0b2d"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table3_SPGFS_Fleet_Role_Utilisation.csv",
+      "Bytes": 1137,
+      "SHA256": "e4d789ae06a2efec78608f618630ba75ac3b8f43967702bfca60b9a50fcd672a"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/Table3_SPGFS_Descriptive_Input_Heterogeneity.csv",
+      "Bytes": 2748,
+      "SHA256": "d2885f845638d17428d30741b7f1519182d29da99b695aadce33668bbd72c8f8"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/SPGFS_Primary_Input_Covariates.csv",
+      "Bytes": 2544,
+      "SHA256": "54d8b27875dfe8e09b3943b1b9b6c56de37bee59b7fcd956f7adf214db85c6ca"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/SPGFS_Fleet_and_Heterogeneity_Analysis.mat",
+      "Bytes": 5514,
+      "SHA256": "bf5792625fbb78a0b48c3fd62336106087336a87d9a31bb79d2e568e839ed9fa"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/SPGFS_Holdout_Order_Outcomes.csv",
+      "Bytes": 204635,
+      "SHA256": "ce082d848c88ca2eecde06b7069a553dfeb41db5fa143384616ca95f803f1ff3"
+    },
+    {
+      "Path": "results_Q2_SP_GFS_final/exports/SPGFS_Paper_Update_Claims.md",
+      "Bytes": 2664,
+      "SHA256": "72e3c080d185a395919a8532d7f5bdcc7f28a06799f5124d9dc87ff8faad6af2"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/spgfs_public_calibration_contract.json",
+      "Bytes": 1902,
+      "SHA256": "85d7610aac7321a3b079fb0b25d63541d83389ca564dfc945c1af94dda7ee230"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/sao_paulo_gfs_era5_forecast_pairs_20min.csv",
+      "Bytes": 4894016,
+      "SHA256": "65e05e646c9558a2acfdf08cb22c4a7472ce5c9275f5b5ae073844ff4d9b9c8f"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/sao_paulo_order_weather_20min.csv",
+      "Bytes": 1600155,
+      "SHA256": "36a7e1f691f3df7931e13aef90863add033ca27a42b2e6ed919c8d3900111d38"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/sao_paulo_joint_episode_catalog.csv",
+      "Bytes": 30855,
+      "SHA256": "fee1f782917421da984d8c34ec6aaf04a4c6646c2b7fe82b80812cf8ff879080"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/olist_12_zone_geometry.csv",
+      "Bytes": 2080,
+      "SHA256": "9ffae311184101b430b4847c391777fe07fa8dcd5cf612b6b65af3fdbc6dc846"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/olist_hourly_demand_profile.csv",
+      "Bytes": 1214,
+      "SHA256": "3dddf6ca382bad4a65eb30a71cdc3e9b4d42c456dc0a5e31acf1b8c3ead82194"
+    },
+    {
+      "Path": "GBT初稿/数据标定/processed/cmu_flight_energy_summary.csv",
+      "Bytes": 27086,
+      "SHA256": "375dd257036df012161878b1b85b09a48fce23ddf209061c4414aecfd2be1923"
+    },
+    {
+      "Path": "GBT初稿/数据标定/source_manifest.json",
+      "Bytes": 5827,
+      "SHA256": "1b7c6085bbbe18dfaf91ce65d251dc5a93615ac578df1cf1d838e2f9f41aa66d"
+    },
+    {
+      "Path": "GBT初稿/数据标定/sao_paulo_gfs_source_manifest.json",
+      "Bytes": 1630,
+      "SHA256": "25e220be711aa4ea3a11bf36cefb6ad60cff9ccf0eb9c9e674ffca0faa3ca2a0"
+    },
+    {
+      "Path": "GBT初稿/数据标定/joint_replay_source_manifest.json",
+      "Bytes": 707,
+      "SHA256": "4cb440e0b1f2195a65e387e8834a33350d955fc6451ba84d55b8cb5b57cb41da"
+    },
+    {
+      "Path": "GBT初稿/数据标定/energy_telemetry_search_manifest.json",
+      "Bytes": 1777,
+      "SHA256": "6ec22d3d22bcbf1a851908d777e288372fefd435dbc498625daf1bb44dd9b2ac"
+    },
+    {
+      "Path": "GBT初稿/数据标定/reports/sao_paulo_gfs_forecast_validation.json",
+      "Bytes": 3796,
+      "SHA256": "a25c7fd3dbde541707e1e65812b2616ad2b628948b1805c0233121ff1a2cffad"
+    },
+    {
+      "Path": "GBT初稿/数据标定/matlab/q2_v2_load_public_spatial_zones.m",
+      "Bytes": 1361,
+      "SHA256": "f9b786893c358196c50eda4cc8cf0fc87bdaf2132fee82e17b5043c30438e633"
+    },
+    {
+      "Path": "GBT初稿/数据标定/matlab/q2_v2_draw_public_arrivals.m",
+      "Bytes": 2636,
+      "SHA256": "3659d41c36ea23f047e089f385419a8768d0d9113d02f70bdcf8ae8c2725ec5a"
+    },
+    {
+      "Path": "GBT初稿/数据标定/matlab/q2_v2_draw_public_weather_path.m",
+      "Bytes": 2183,
+      "SHA256": "783d9117a73bda00fa79c664d5f739637e3199f64f3d8977e6a46eca44fbedcb"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig1_Closed_Loop_Governance_Architecture.png",
+      "Bytes": 232389,
+      "SHA256": "8cc82ed9c47696d14b5b408bce2a9b6d4323e53c061dedec5b58e22c56797a73"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig2_SaoPaulo_Calibration_Evidence.png",
+      "Bytes": 353061,
+      "SHA256": "8bfef6eb70d5d645e52c32733a74b6f1476dbf157032e61e6b8dd01f7eed460d"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig3_Representative_SaoPaulo_Replay.png",
+      "Bytes": 375091,
+      "SHA256": "e1c7802d5618168bea12471aab14e3573125d5d8177e2405a5be733e3e7e69d7"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig4_Primary_Holdout_Policy_Evidence.png",
+      "Bytes": 280670,
+      "SHA256": "bc5d89d0499f9abf7682fa183c1b5eb3354f5896eb3dca6db4cea94effcd6f7b"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig5_Governance_Mechanism_and_Inertia_Evidence.png",
+      "Bytes": 247452,
+      "SHA256": "c0b9fe365cfec6623bfca2eec353c3fa2391fcda5b0b9ea1cf788b66d4957dae"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig6_Boundary_and_Safety_Evidence.png",
+      "Bytes": 179117,
+      "SHA256": "f58b03bed18323e9d259a01ffe4518d3d318b71741ea9fe13d61ca3a9927a853"
+    },
+    {
+      "Path": "GBT初稿/图表/Fig7_Fleet_and_Input_Heterogeneity_Boundaries.png",
+      "Bytes": 270736,
+      "SHA256": "f80c912382faf7b1467815e095769e9eddb2daa0f2e0651627e45967d7fb6a8f"
+    },
+    {
+      "Path": "GBT初稿/图表/Table1_Calibration_and_Experimental_Contract.docx",
+      "Bytes": 38141,
+      "SHA256": "426ab10a6196867ccc303e59e44bee674ed28b6fd1a8057bee5f97a22b3e7d67"
+    },
+    {
+      "Path": "GBT初稿/图表/Table2_Primary_Holdout_Policy_Evidence.docx",
+      "Bytes": 38174,
+      "SHA256": "a5814f3c6da63768885d341f771c8818f9b7a8052b61acf3459d8bd928797c5d"
+    },
+    {
+      "Path": "GBT初稿/图表/Table3_Mechanism_Boundary_and_Safety_Evidence.docx",
+      "Bytes": 39018,
+      "SHA256": "32ec7e9dd4c76a26499102040092191064201f38ebe92b5d86aaa03a12c6313e"
+    },
+    {
+      "Path": "GBT初稿/图表/Table4_Fleet_Size_and_Input_Heterogeneity.docx",
+      "Bytes": 38230,
+      "SHA256": "3fecee08253cdd16ef3206d7e700964c26bb5733acfc481bfadfa43b5a6b9576"
+    },
+    {
+      "Path": "GBT初稿/图表/AppendixTableA6_Outcome_Blind_Input_Heterogeneity.docx",
+      "Bytes": 38415,
+      "SHA256": "597a464265e2cd1dadf18cd613061fb13dbff91fdb0dade131cc4ce290d268c2"
+    },
+    {
+      "Path": "q2_default_config.m",
+      "Bytes": 6546,
+      "SHA256": "fd8c00fb848ba7a3e089f7cb6fb39d58cbb343598cec33064c7103985cb74a5b"
+    },
+    {
+      "Path": "q2_policy_catalog.m",
+      "Bytes": 2466,
+      "SHA256": "e48cdd10922d34160c68b3c8283a8481fa921c8182161ca131b39a3ed7cded5a"
+    },
+    {
+      "Path": "run_q2_evidence_suite.m",
+      "Bytes": 58443,
+      "SHA256": "7cb84df4f613ec145963f49005be60986750406662b84c10c07cb29736e1342f"
+    },
+    {
+      "Path": "q2_draw_sao_paulo_gfs_era5_scenario.m",
+      "Bytes": 4191,
+      "SHA256": "71ad79e7b56760b4d89f3d0a226244e759b1eb6fb2dc5fb001ec73b04d3f905b"
+    },
+    {
+      "Path": "run_q2_sao_paulo_final_suite.m",
+      "Bytes": 6636,
+      "SHA256": "6106bdf4bc46b83714200c9a169e21ea70861de4d248b1c7b4669e9c1ac247dc"
+    },
+    {
+      "Path": "q2_adaptive_w3_value.m",
+      "Bytes": 1389,
+      "SHA256": "8a07e66051fb1ad180285d4b6918b12b57272d4acbaadb72d31ff917208263c7"
+    },
+    {
+      "Path": "q2_plan_change_distance.m",
+      "Bytes": 631,
+      "SHA256": "35ef2535d06f6434488b8613dc8d0dce04c832f5c039c2d667f7f92542724988"
+    },
+    {
+      "Path": "q2_platform_relocate.m",
+      "Bytes": 705,
+      "SHA256": "c5ced8c23ebd18270717ea0aee1930bb6e569ad53d7cc24e7d282b518b7aea0c"
+    },
+    {
+      "Path": "q2_flight_physics.m",
+      "Bytes": 3129,
+      "SHA256": "54ee09ad111d7b9d4a04039f46851304a75cfe996def4ac49152cd360fe2775e"
+    },
+    {
+      "Path": "q2_order_status.m",
+      "Bytes": 775,
+      "SHA256": "2147705e3089cb733bc41da3a2a7f78fee77c881150906ebdae4a06607a7e52e"
+    },
+    {
+      "Path": "q2_mean_ci.m",
+      "Bytes": 524,
+      "SHA256": "baa71e465b52505223c5821d7b44e15797e9d2e597adee1945afef7ea74d71c7"
+    },
+    {
+      "Path": "q2_release_fingerprint.m",
+      "Bytes": 3352,
+      "SHA256": "fdd1458e060cb5fd4b816d027361569a2929c40dc89a0b217c37ee2b59eeb0a7"
+    },
+    {
+      "Path": "q2_v3_export_primary_statistics.m",
+      "Bytes": 7906,
+      "SHA256": "00b79d55633cf4423ba85924a339caedbc3ced558983075bbabaff147f4fb020"
+    },
+    {
+      "Path": "q2_sp_export_supporting_statistics.m",
+      "Bytes": 5711,
+      "SHA256": "5f8297261ae422eba1376058504ab53afeaf87e6bba9b30cf4380208b4705a28"
+    },
+    {
+      "Path": "q2_sp_export_fleet_and_heterogeneity_statistics.m",
+      "Bytes": 4552,
+      "SHA256": "39efdf35bcf7a49b2005c64938990fe66201bc72660898b2790ceb4ccd971dcd"
+    },
+    {
+      "Path": "generate_SPGFS_submission_figures.m",
+      "Bytes": 25630,
+      "SHA256": "c4865788eaaa1a5e1e0a639002fa16cc4d9bc24f0850f5e4622df12dee581cfd"
+    },
+    {
+      "Path": "verify_q2_spgfs_release.m",
+      "Bytes": 3422,
+      "SHA256": "7572f32fad2ab388ae810a97583a0537b87040886e8f1202f0adf34060f42370"
+    },
+    {
+      "Path": "create_SPGFS_submission_tables.py",
+      "Bytes": 14433,
+      "SHA256": "f5be58b4854191b32c59269da92959f062197c03fdc840ffc28b9d04b45e591e"
+    },
+    {
+      "Path": "build_spgfs_artifact_manifest.py",
+      "Bytes": 7057,
+      "SHA256": "8a3a5996d27dbf0c54bac1fa391217d8cd3dc12bca89a7df84a6db682a7ab6b9"
+    }
+  ],
+  "ManifestSHA256": "79dd4d67912a2bd80f9094ccd911ca4e3d55f3b1d22b7a4ee792c6d19cdb4748"
+}

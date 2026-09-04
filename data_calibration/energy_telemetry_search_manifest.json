@@ -1,0 +1,44 @@
+{
+  "version": "energy-telemetry-search-20260806",
+  "search_cutoff": "2026-08-06",
+  "target": "open same-city Sao Paulo rotor-UAV mission energy telemetry",
+  "eligibility": {
+    "location": "Sao Paulo city or metropolitan area",
+    "platform": "real rotor UAV",
+    "energy": "voltage/current/power or auditable mission energy",
+    "covariates": "at least two of mission, trajectory, speed, payload, or environment",
+    "access": "public download with auditable metadata"
+  },
+  "result": "no_qualifying_dataset_identified",
+  "result_scope": "systematic public-repository search; not a universal proof of nonexistence",
+  "retained_primary_engineering_dataset": {
+    "title": "In-flight positional and energy use data set of a DJI Matrice 100 quadcopter for small package delivery",
+    "article_doi": "10.1038/s41597-021-00930-x",
+    "data_doi": "10.1184/R1/12683453",
+    "location": "Penn Hills near Pittsburgh, Pennsylvania, USA",
+    "role": "cross-location engineering validation only",
+    "not_claimed": "Sao Paulo local UAV calibration"
+  },
+  "excluded_candidates": [
+    {
+      "name": "APdrone",
+      "doi": "10.17632/zgsvdtxnfh.2",
+      "reason": "not shown to be collected in Sao Paulo and not package-delivery specific"
+    },
+    {
+      "name": "MATLAB and Parrot Anafi data",
+      "doi": "10.17632/gjjgpfdx22.1",
+      "reason": "Auckland field tests and coarser battery-consumption measurements"
+    },
+    {
+      "name": "AS365-K2 helicopter flight test",
+      "doi": "10.17632/4nzsg7vth9.3",
+      "reason": "manned helicopter vibration data without battery-energy telemetry"
+    },
+    {
+      "name": "Fixed-Wing UAS Telemetry Benchmark",
+      "doi": "10.5281/zenodo.16992976",
+      "reason": "fixed-wing and not Sao Paulo"
+    }
+  ]
+}

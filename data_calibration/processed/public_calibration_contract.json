@@ -1,0 +1,36 @@
+{
+  "package_version": "sao-paulo-gfs-era5-joint-replay-v1",
+  "method": "Public multi-source, empirically informed simulation with same-city order-weather replay",
+  "demand": {
+    "reference_area": "Sao Paulo city subset of Olist public data",
+    "source_order_count": 15540,
+    "timing_contract": "Purchase timestamps are demand-timing proxies, not observed release timestamps for last-mile drone operations.",
+    "spatial_contract": "Twelve calibration-only abstract demand zones define a relative spatial distribution. They do not identify a warehouse, a platform location, or actual drone routes."
+  },
+  "weather": {
+    "reference_area": "Sao Paulo, Brazil",
+    "forecast_source": "GFS 06 UTC 10 m wind archive",
+    "actual_source": "ERA5 10 m wind",
+    "decision_resolution_minutes": 20,
+    "matched_rows": 19035,
+    "matched_episode_days": 705,
+    "forecast_lead_hours": [5.0, 14.666667],
+    "calibration_scalar_forecast_minus_actual_bias_mps": 0.4883457117,
+    "development_bias_corrected_absolute_residual_mps": {
+      "p50": 0.6295345489,
+      "p80": 1.1629470278,
+      "p90": 1.4793821485
+    },
+    "primary_trigger_contract": "P90 is fixed on development data before the 60-scenario primary holdout evaluation; P80 is a supplementary boundary condition."
+  },
+  "energy": {
+    "source": "Public DJI Matrice 100 mission-energy telemetry",
+    "scope": "External engineering energy envelope only; it is neither same-city nor target-aircraft telemetry.",
+    "holdout_mape": 0.081162
+  },
+  "not_empirically_estimated": {
+    "vip_labels": "No compatible public VIP or SLA field exists.",
+    "W3_and_Hs": "Governance parameters and a structural plan-change measure; they require historical plan versions and organisational workload logs for empirical estimation.",
+    "platform_motion": "Engineering scenario parameter absent platform and traffic trajectory data."
+  }
+}

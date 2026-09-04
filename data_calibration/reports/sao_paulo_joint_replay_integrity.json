@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "checks": {
+    "episode_count": 705,
+    "rows": 19035,
+    "rows_by_split": {
+      "calibration": 14013,
+      "development": 2457,
+      "holdout": 2565
+    },
+    "steps_per_episode": 27,
+    "all_episode_steps_complete": true,
+    "catalog_totals_match": true,
+    "arrival_shares_valid": true,
+    "weather_complete": true,
+    "explicit_era5_model_request": true
+  },
+  "sha256": {
+    "step_file": "36a7e1f691f3df7931e13aef90863add033ca27a42b2e6ed919c8d3900111d38",
+    "catalog_file": "fee1f782917421da984d8c34ec6aaf04a4c6646c2b7fe82b80812cf8ff879080",
+    "source_manifest": "4cb440e0b1f2195a65e387e8834a33350d955fc6451ba84d55b8cb5b57cb41da"
+  },
+  "errors": []
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "weather_actual_era5_open_meteo_2024",
+    "file": "weather_actual_era5_open_meteo_2024.json",
+    "url": "https://archive-api.open-meteo.com/v1/archive?latitude=40.4406&longitude=-79.9959&start_date=2024-01-01&end_date=2024-12-31&hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=ms&timezone=UTC",
+    "licence": "Open-Meteo non-commercial attribution licence; underlying ERA5/ERA5-Land attribution applies.",
+    "purpose": "Hourly reanalysis proxy for realised 10 m wind at the Pittsburgh reference point.",
+    "local_file": "raw/weather_actual_era5_open_meteo_2024.json",
+    "bytes": 244642,
+    "sha256": "4492de600da9ce464122bbfdc0733ac3e9de5cbd3707dbb59430a79db4ee1d68",
+    "downloaded_utc": "2026-08-02T03:52:28.268530+00:00"
+  },
+  {
+    "id": "weather_forecast_gfs_open_meteo_2024",
+    "file": "weather_forecast_gfs_open_meteo_2024.json",
+    "url": "https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=40.4406&longitude=-79.9959&start_date=2024-01-01&end_date=2024-12-31&hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=ms&timezone=UTC&models=gfs_seamless",
+    "licence": "Open-Meteo non-commercial attribution licence; forecast provenance is NOAA NCEP GFS.",
+    "purpose": "Archived near-term GFS forecast proxy, paired to the realised-wind proxy by valid hour.",
+    "local_file": "raw/weather_forecast_gfs_open_meteo_2024.json",
+    "bytes": 243902,
+    "sha256": "8ce95e0326bbec57ae28b109ee54dcc2c39fc2038335c2d827fd3913f1dc3dda",
+    "downloaded_utc": "2026-08-02T03:52:28.269530+00:00"
+  },
+  {
+    "id": "cmu_package_delivery_flights_zip",
+    "file": "cmu_package_delivery_flights.zip",
+    "url": "https://ndownloader.figshare.com/files/26385070",
+    "licence": "CC BY 4.0.",
+    "purpose": "Public DJI Matrice 100 package-delivery telemetry for external energy-model validation.",
+    "local_file": "raw/cmu_package_delivery_flights.zip",
+    "bytes": 41274360,
+    "sha256": "98f65a1ab54a8b618c169fdf49311a53ff1fefed86fdc3f440d6a0166ce49fb1",
+    "downloaded_utc": "2026-08-02T03:52:28.298037+00:00"
+  },
+  {
+    "id": "cmu_package_delivery_parameters",
+    "file": "cmu_package_delivery_parameters.csv",
+    "url": "https://ndownloader.figshare.com/files/26385034",
+    "licence": "CC BY 4.0.",
+    "purpose": "Flight-level operating-condition metadata for the public telemetry set.",
+    "local_file": "raw/cmu_package_delivery_parameters.csv",
+    "bytes": 7867,
+    "sha256": "568dffaed11a4d335ef4f8a932b342c836907af2f4aa54da9b4a0e2ffef2108a",
+    "downloaded_utc": "2026-08-02T03:52:28.299037+00:00"
+  },
+  {
+    "id": "cmu_package_delivery_readme",
+    "file": "cmu_package_delivery_README.txt",
+    "url": "https://ndownloader.figshare.com/files/26405786",
+    "licence": "CC BY 4.0.",
+    "purpose": "Variable definitions and data-collection protocol for the public telemetry set.",
+    "local_file": "raw/cmu_package_delivery_README.txt",
+    "bytes": 25101,
+    "sha256": "8601dd211d6c297c5411992dc34923bdb98b72cdc287517ed18e479f0e9540fd",
+    "downloaded_utc": "2026-08-02T03:52:28.299037+00:00"
+  },
+  {
+    "id": "amazon_last_mile_route_data",
+    "file": "amazon_last_mile_route_data.json",
+    "url": "https://amazon-last-mile-challenges.s3.amazonaws.com/almrrc2021/almrrc2021-data-training/model_build_inputs/route_data.json",
+    "licence": "CC BY-NC 4.0.",
+    "purpose": "Real last-mile route, stop and route-start structure used only as an operational-load proxy.",
+    "local_file": "raw/amazon_last_mile_route_data.json",
+    "bytes": 78972162,
+    "sha256": "da3a5d4e73b683d756111f0d9e6d3f20eb8e82adf7c89ee6ee0cb2239abd2f38",
+    "downloaded_utc": "2026-08-02T03:52:28.354388+00:00"
+  },
+  {
+    "id": "olist_orders",
+    "file": "olist_orders_dataset.csv",
+    "url": "https://raw.githubusercontent.com/spdrio/Brazilian-E-Commerce-Public-Dataset-by-Olist/master/files/olist_orders_dataset.csv",
+    "licence": "Public Olist dataset terms; GitHub mirror is used only to retrieve the original public data.",
+    "purpose": "Actual order-purchase timestamps for calibrating temporal demand intensity; not a drone-delivery outcome dataset.",
+    "local_file": "raw/olist_orders_dataset.csv",
+    "bytes": 17654914,
+    "sha256": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf",
+    "downloaded_utc": "2026-08-02T03:52:28.367389+00:00"
+  },
+  {
+    "id": "olist_customers",
+    "file": "olist_customers_dataset.csv",
+    "url": "https://raw.githubusercontent.com/spdrio/Brazilian-E-Commerce-Public-Dataset-by-Olist/master/files/olist_customers_dataset.csv",
+    "licence": "Public Olist dataset terms; GitHub mirror is used only to retrieve the original public data.",
+    "purpose": "Customer zip-prefix labels for calibrating relative spatial demand concentration.",
+    "local_file": "raw/olist_customers_dataset.csv",
+    "bytes": 9033957,
+    "sha256": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2",
+    "downloaded_utc": "2026-08-02T03:52:28.374389+00:00"
+  },
+  {
+    "id": "olist_geolocation",
+    "file": "olist_geolocation_dataset.csv",
+    "url": "https://huggingface.co/datasets/miminmoons/olist-ecommerce-for-delivery-and-review-prediction/resolve/main/data/olist_geolocation_dataset.csv?download=true",
+    "licence": "MIT mirror of the public Olist dataset; used only to retrieve the original public geolocation table.",
+    "purpose": "Public zip-prefix coordinate records used only after robust aggregation to calibrate abstract demand-zone geometry.",
+    "local_file": "raw/olist_geolocation_dataset.csv",
+    "bytes": 61273883,
+    "sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6",
+    "downloaded_utc": "2026-08-02T03:52:32.857132+00:00"
+  }
+]

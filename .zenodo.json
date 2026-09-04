@@ -1,0 +1,33 @@
+{
+  "title": "Reproducibility package for Closed-Loop Plan Governance for Dynamic Drone Delivery Supported by a Mobile Platform",
+  "upload_type": "software",
+  "description": "Author-written simulation and post-processing code, public derived calibration inputs, frozen scenario-level results, random seeds, figures, tables, and provenance records for an empirically informed study of planning access, plan inertia, and a shared safety guard in dynamic drone delivery. The package uses a mixed-license scheme documented in LICENSE_SCOPE.md; third-party raw data and proprietary software are not redistributed.",
+  "creators": [
+    {
+      "name": "Huang, Wenjie",
+      "affiliation": "School of Electrical Engineering, Southwest Jiaotong University"
+    },
+    {
+      "name": "Zhou, Jiang",
+      "affiliation": "School of Economics and Management, Southwest Jiaotong University"
+    }
+  ],
+  "keywords": [
+    "dynamic drone delivery",
+    "mobile platform",
+    "event-triggered planning",
+    "plan inertia",
+    "safety guard",
+    "empirically informed simulation",
+    "reproducibility"
+  ],
+  "access_right": "open",
+  "license": "other-open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Corn6947/closed-loop-plan-governance-drone-delivery",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+*.asv
+*.m~
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.log
+private/
+licenses/
+gurobi.lic
+*.key

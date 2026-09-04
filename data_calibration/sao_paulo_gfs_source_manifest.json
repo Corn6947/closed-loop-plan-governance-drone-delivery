@@ -1,0 +1,46 @@
+{
+  "version": "sao-paulo-gfs-era5-pairing-1",
+  "created": "2026-08-06",
+  "source": {
+    "name": "NCEP GFS 0.25 Degree Global Forecast Grids Historical Archive",
+    "dataset_id": "d084001",
+    "doi": "10.5065/D65D8PWK",
+    "official_page": "https://gdex.ucar.edu/datasets/d084001/",
+    "access": "NSF NCAR GDEX THREDDS NCSS",
+    "license": "CC BY 4.0"
+  },
+  "selection": {
+    "cycle": "06 UTC daily",
+    "forecast_hours": [
+      3,
+      6,
+      9,
+      12,
+      15
+    ],
+    "variables": [
+      "10 m u wind",
+      "10 m v wind"
+    ],
+    "temporal_interpolation": "linear interpolation of u and v in UTC",
+    "local_timezone": "America/Sao_Paulo",
+    "decision_window": "09:00-17:40 local; 27 x 20-minute steps",
+    "lookahead_control": "fixed 06 UTC initialization precedes every decision window"
+  },
+  "raw_directory": "raw/sao_paulo_gfs_operational_06z_point",
+  "processed_file": "processed/sao_paulo_gfs_era5_forecast_pairs_20min.csv",
+  "validation_file": "reports/sao_paulo_gfs_forecast_validation.json",
+  "integrity": {
+    "expected_file_count": 3525,
+    "actual_expected_file_count": 3525,
+    "missing_file_count": 0,
+    "extra_file_count": 0,
+    "invalid_file_count": 0,
+    "valid_time_error_count": 0,
+    "unique_grid_coordinate_count": 1,
+    "total_raw_bytes": 954518,
+    "collection_sha256": "8cd22b198ba25ffb969666dd6b49f26c175fc68a0a4f1b9179a47ae642acbf13",
+    "processed_sha256": "65e05e646c9558a2acfdf08cb22c4a7472ce5c9275f5b5ae073844ff4d9b9c8f"
+  },
+  "status": "data_collected_processed_and_validated_no_experiment_code_changed"
+}

@@ -1,0 +1,94 @@
+{
+  "package_role": "same-city same-period operational-forecast versus realised-weather pairing",
+  "source_dataset": "NCEP GFS 0.25 Degree Global Forecast Grids Historical Archive",
+  "source_doi": "10.5065/D65D8PWK",
+  "reference_location": {
+    "requested_latitude": -23.5505,
+    "requested_longitude": -46.6333,
+    "returned_grid_latitude": -23.5,
+    "returned_grid_longitude": -46.75
+  },
+  "forecast_contract": {
+    "cycle": "06 UTC daily",
+    "forecast_hours": [
+      3,
+      6,
+      9,
+      12,
+      15
+    ],
+    "variables": [
+      "10 m u wind",
+      "10 m v wind"
+    ],
+    "temporal_interpolation": "linear interpolation of u and v in UTC",
+    "local_timezone": "America/Sao_Paulo",
+    "decision_window": "09:00-17:40 local; 27 x 20-minute steps",
+    "lookahead_control": "fixed 06 UTC initialization precedes every decision window"
+  },
+  "raw_validation": {
+    "expected_file_count": 3525,
+    "actual_expected_file_count": 3525,
+    "missing_file_count": 0,
+    "extra_file_count": 0,
+    "invalid_file_count": 0,
+    "valid_time_error_count": 0,
+    "unique_grid_coordinate_count": 1,
+    "total_raw_bytes": 954518,
+    "collection_sha256": "8cd22b198ba25ffb969666dd6b49f26c175fc68a0a4f1b9179a47ae642acbf13"
+  },
+  "paired_validation": {
+    "episode_count": 705,
+    "row_count": 19035,
+    "expected_row_count": 19035,
+    "missing_forecast_values": 0,
+    "forecast_lead_hours_min": 5.0,
+    "forecast_lead_hours_max": 14.666666666666666,
+    "calibration_scalar_speed_bias_forecast_minus_actual_mps": 0.48834571171967484,
+    "calibration_u_bias_mps": 0.06917802802357739,
+    "calibration_v_bias_mps": 0.2213775788122376,
+    "mean_calibration_episode_lag1_autocorrelation": 0.9435558526910659,
+    "split_statistics": {
+      "calibration": {
+        "row_count": 14013,
+        "mean_bias_corrected_speed_error_mps": 1.2169432425777781e-17,
+        "mae_mps": 0.7537011960591861,
+        "rmse_mps": 0.9865135065460293,
+        "abs_error_p50_mps": 0.6031055059162373,
+        "abs_error_p80_mps": 1.168478954017028,
+        "abs_error_p90_mps": 1.558565309911424,
+        "abs_error_p95_mps": 1.97372519757086,
+        "bias_corrected_vector_error_p95_mps": 3.122428096637692
+      },
+      "development": {
+        "row_count": 2457,
+        "mean_bias_corrected_speed_error_mps": 0.022631917693506646,
+        "mae_mps": 0.725265470689387,
+        "rmse_mps": 0.9140456818555317,
+        "abs_error_p50_mps": 0.6295345488510999,
+        "abs_error_p80_mps": 1.162947027803834,
+        "abs_error_p90_mps": 1.4793821485344936,
+        "abs_error_p95_mps": 1.7479035777577154,
+        "bias_corrected_vector_error_p95_mps": 2.6670956556394136
+      },
+      "holdout": {
+        "row_count": 2565,
+        "mean_bias_corrected_speed_error_mps": -0.01651151109570795,
+        "mae_mps": 0.7200188745047124,
+        "rmse_mps": 0.9222933646562719,
+        "abs_error_p50_mps": 0.5839826450512386,
+        "abs_error_p80_mps": 1.14739666583438,
+        "abs_error_p90_mps": 1.5244816167940476,
+        "abs_error_p95_mps": 1.7820125085332736,
+        "bias_corrected_vector_error_p95_mps": 3.010593766810203
+      }
+    },
+    "processed_sha256": "65e05e646c9558a2acfdf08cb22c4a7472ce5c9275f5b5ae073844ff4d9b9c8f"
+  },
+  "interpretation_boundary": [
+    "GFS is an archived operational forecast, not a perfect reconstruction of the exact file availability minute at each operator workstation",
+    "Olist purchase timestamps remain demand-timing proxies, not observed last-mile release timestamps",
+    "ERA5 is realised-weather reanalysis, not local anemometer truth",
+    "no experimental threshold or policy parameter is changed by creating this pairing"
+  ]
+}
